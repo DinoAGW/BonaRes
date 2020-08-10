@@ -17,15 +17,4 @@ public class DateiDownload {
 	public DateiDownload() throws IOException {
 		this.aWebDAV_Manager = new WebDAV_Manager(System.getProperty("user.home") + fs + "BonaRes_Properties.txt");
 	}
-	
-//	public void download() throws IOException {
-//		Sardine sardine = SardineFactory.begin();
-//		List<DavResource> resources = sardine.list("http://yourdavserver.com/adirectory/");
-//		for (DavResource res : resources)
-//		{
-//		     System.out.println(res);
-//		}
-//		
-//		System.out.println("Download Ende.");
-//	}
 }

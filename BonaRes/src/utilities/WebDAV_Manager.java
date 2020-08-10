@@ -23,34 +23,35 @@ public class WebDAV_Manager {
 		this.fs = Utilities.fs;
 		Properties_Manager prop = new Properties_Manager(propertyDateiPfad);
 		this.URL = prop.readStringFromProperty("URL");
-//		this.URL = "https://owncloud.bonares.de/index.php/apps/files?dir=/&fileid=101358";
 		this.Benutzername = prop.readStringFromProperty("Benutzername");
 		this.Password = prop.readStringFromProperty("Password");
 	}
 
+	/*
+	 * Was nötig war:
+	 * URL im Browser eingeben.
+	 * Zertifikat anschauen -> Details
+	 * In Datei kopieren... weiter...
+	 * Der -codiert-binär X.509 (.CER)...
+	 * Und unter C:\Del als bonares abspeichern.
+	 * cmd mit Adminrechten ausführen...
+	 * C:\Windows\system32>keytool -importcert -trustcacerts -alias bonares -file C:\Del\bonares.cer -keystore "%java_home%jre/lib/security/cacerts" -storepass changeit
+	 * eingeben und Zertifikat vertrauen.
+	 */
 	public void anzeige() throws IOException {
-//		String keyStoreFilename = System.getProperty("user.home") + fs + "OwnCloud.cer";
-//		File keystoreFile = new File(keyStoreFilename);
-//		FileInputStream fis = new FileInputStream(keystoreFile);		
-//		KeyStore keyStore = KeyStore.getInstance(KeyStore.getDefaultType()); // JKS
-//		keyStore.load(fis, null);		
-//		final SSLSocketFactory socketFactory = new SSLSocketFactory(keyStore);				
-//			
-//		Sardine sardine = new SardineImpl() {
-//			@Override
-//			protected SSLSocketFactory createDefaultSecureSocketFactory() {
-//				return socketFactory;
-//			}			
-//		};
-		
-		Sardine sardine = SardineFactory.begin(this.Benutzername, this.Password);
-		System.out.println(this.URL);
-		List<DavResource> resources = sardine.list(this.URL);
-		for (DavResource res : resources)
-		{
-		     System.out.println(res);
+
+		try {
+			Sardine sardine = SardineFactory.begin(this.Benutzername, this.Password);
+			//System.out.println(this.URL);
+			List<DavResource> resources = sardine.list(this.URL);
+			for (DavResource res : resources) {
+				System.out.println(res);
+			}
+		} catch(Exception e) {
+			System.out.println("Fehler aufgetreten:");
+			System.out.println(e);
 		}
-		
+
 		System.out.println("Anzeige Ende.");
 	}
 
