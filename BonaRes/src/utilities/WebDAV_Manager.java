@@ -8,7 +8,7 @@ import java.io.InputStream;
 import java.security.KeyStore;
 import java.util.List;
 
-import javax.annotation.Resources;
+//import javax.annotation.Resources;
 import javax.net.ssl.SSLSocketFactory;
 
 import com.github.sardine.DavResource;
@@ -17,9 +17,9 @@ import com.github.sardine.SardineFactory;
 
 @SuppressWarnings("unused")
 /*
- * Was nötig war: URL im Browser eingeben. Zertifikat anschauen -> Details In
- * Datei kopieren... weiter... Der -codiert-binär X.509 (.CER)... Und unter
- * C:\Del als bonares abspeichern. cmd mit Adminrechten ausführen...
+ * Was nï¿½tig war: URL im Browser eingeben. Zertifikat anschauen -> Details In
+ * Datei kopieren... weiter... Der -codiert-binï¿½r X.509 (.CER)... Und unter
+ * C:\Del als bonares abspeichern. cmd mit Adminrechten ausfï¿½hren...
  * C:\Windows\system32>keytool -importcert -trustcacerts -alias bonares -file
  * C:\Del\bonares.cer -keystore "%java_home%jre/lib/security/cacerts" -storepass
  * changeit eingeben und Zertifikat vertrauen.
